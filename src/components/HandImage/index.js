@@ -5,9 +5,9 @@ import { ReactComponent as Rock } from "../../assets/rock.svg";
 import { ReactComponent as Scissors } from "../../assets/scissors.svg";
 
 function HandImage(props) {
-  if (props.selectedHand === "Rock") return <Rock />;
-  if (props.selectedHand === "Paper") return <Paper />;
-  if (props.selectedHand === "Scissors") return <Scissors />;
+  if (props.selectedHand === "Rock") return <Rock fill={props.fill} />;
+  if (props.selectedHand === "Paper") return <Paper fill={props.fill} />;
+  if (props.selectedHand === "Scissors") return <Scissors fill={props.fill} />;
 }
 
 HandImage.propTypes = {};

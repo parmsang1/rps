@@ -15,7 +15,9 @@ function App() {
       <PlayerHand selectHand={selectHand} />
       <OpponentHand />
       <p data-testid="selected-hand">{selectedHand}</p>
-      {selectedHand ? <HandImage selectedHand={selectedHand} /> : null}
+      {selectedHand ? (
+        <HandImage selectedHand={selectedHand} fill={"lightblue"} />
+      ) : null}
     </div>
   );
 }
