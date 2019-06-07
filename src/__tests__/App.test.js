@@ -14,4 +14,9 @@ describe("app", () => {
     expect(getByTestId("player-hand")).toBeInTheDocument();
     expect(getByTestId("player-hand")).toHaveClass("player-hand");
   });
+  it("contains a opponent hand container", () => {
+    const { getByTestId } = render(<App />);
+    expect(getByTestId("opponent-hand")).toBeInTheDocument();
+    expect(getByTestId("opponent-hand")).toHaveClass("opponent-hand");
+  });
 });
