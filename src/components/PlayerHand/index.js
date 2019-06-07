@@ -5,9 +5,15 @@ function PlayerHand(props) {
   const [value, setValue] = useState("Rock");
   const handleChange = event => setValue(event.target.value);
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    props.selectHand(value);
+    //console.log(props.selectHand);
+  };
+
   return (
     <div data-testid="player-hand" className="player-hand">
-      <form>
+      <form onSubmit={handleSubmit}>
         <fieldset>
           <legend>Choose your hand</legend>
           {["Rock", "Paper", "Scissors"].map(r => (
@@ -22,6 +28,13 @@ function PlayerHand(props) {
             </label>
           ))}
         </fieldset>
+        <button
+          data-testid="submit-hand"
+          type="submit"
+          className="submit-button"
+        >
+          Play hand!
+        </button>
       </form>
     </div>
   );

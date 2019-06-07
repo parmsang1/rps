@@ -1,6 +1,7 @@
 import React from "react";
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 import App from "../App";
+import PlayerHand from "../components/PlayerHand";
 
 afterEach(cleanup);
 
@@ -18,5 +19,13 @@ describe("app", () => {
     const { getByTestId } = render(<App />);
     expect(getByTestId("opponent-hand")).toBeInTheDocument();
     expect(getByTestId("opponent-hand")).toHaveClass("opponent-hand");
+  });
+  it("should display selected hand when submitted form", () => {
+    const { getByTestId } = render(<App />);
+    const submit = getByTestId("submit-hand");
+    const selectedHand = getByTestId("selected-hand");
+
+    fireEvent.click(submit);
+    expect(selectedHand).toHaveTextContent("Rock");
   });
 });
