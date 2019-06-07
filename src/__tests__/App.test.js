@@ -20,12 +20,12 @@ describe("app", () => {
     expect(getByTestId("opponent-hand")).toBeInTheDocument();
     expect(getByTestId("opponent-hand")).toHaveClass("opponent-hand");
   });
-  it("should display selected hand when submitted form", () => {
-    const { getByTestId } = render(<App />);
+  it("should display selected hand when submitting player hand", () => {
+    const { getByTestId, getByText } = render(<App />);
     const submit = getByTestId("submit-hand");
     const selectedHand = getByTestId("selected-hand");
-
     fireEvent.click(submit);
     expect(selectedHand).toHaveTextContent("Rock");
+    expect(getByText("rock.svg")).toBeInTheDocument();
   });
 });
