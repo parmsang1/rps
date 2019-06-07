@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 function PlayerHand(props) {
   const [value, setValue] = useState("Rock");
-
   const handleChange = event => setValue(event.target.value);
 
   return (
@@ -11,33 +10,17 @@ function PlayerHand(props) {
       <form>
         <fieldset>
           <legend>Choose your hand</legend>
-          <label>
-            Rock
-            <input
-              type="radio"
-              value="Rock"
-              checked={value === "Rock"}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Paper
-            <input
-              type="radio"
-              value="Paper"
-              checked={value === "Paper"}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Scissors
-            <input
-              type="radio"
-              value="Scissors"
-              checked={value === "Scissors"}
-              onChange={handleChange}
-            />
-          </label>
+          {["Rock", "Paper", "Scissors"].map(r => (
+            <label key={r}>
+              {r}
+              <input
+                type="radio"
+                value={r}
+                checked={value === r}
+                onChange={handleChange}
+              />
+            </label>
+          ))}
         </fieldset>
       </form>
     </div>
