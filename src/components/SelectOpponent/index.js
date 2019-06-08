@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function PlayerHand(props) {
-  const [value, setValue] = useState("Rock");
+function SelectOpponent(props) {
+  const [value, setValue] = useState("Computer");
   const handleChange = event => setValue(event.target.value);
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.selectHand(value);
+    props.selectOpponent(value);
   };
 
   return (
-    <div data-testid="player-hand" className="player-hand">
+    <div data-testid="select-opponent" className="select-opponent">
       <form onSubmit={handleSubmit}>
         <fieldset>
           <legend>Choose your hand</legend>
-          {["Rock", "Paper", "Scissors"].map(r => (
+          {["Computer", "Human"].map(r => (
             <label key={r}>
               {r}
               <input
@@ -28,17 +28,17 @@ function PlayerHand(props) {
           ))}
         </fieldset>
         <button
-          data-testid="submit-hand"
+          data-testid="submit-opponent"
           type="submit"
           className="submit-button"
         >
-          Play hand!
+          Select Opponent / Reset Hand
         </button>
       </form>
     </div>
   );
 }
 
-PlayerHand.propTypes = {};
+SelectOpponent.propTypes = {};
 
-export default PlayerHand;
+export default SelectOpponent;
