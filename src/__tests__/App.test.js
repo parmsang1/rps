@@ -5,7 +5,7 @@ import PlayerHand from "../components/PlayerHand";
 
 afterEach(cleanup);
 
-describe("app", () => {
+describe("App", () => {
   it("renders message introducing game", () => {
     const { getByText } = render(<App />);
     expect(getByText("Lets play rock, paper and scissors")).toBeInTheDocument();
@@ -27,5 +27,15 @@ describe("app", () => {
     fireEvent.click(submit);
     expect(selectedHand).toHaveTextContent("Rock");
     expect(getByText("rock.svg")).toBeInTheDocument();
+  });
+  it("can reset the game", () => {
+    const { getByTestId, getByText } = render(<App />);
+    const submit = getByTestId("submit-hand");
+    const reset = getByTestId("submit-opponent");
+    fireEvent.click(submit);
+    const handImage = getByText("rock.svg");
+    expect(handImage).toBeInTheDocument();
+    fireEvent.click(reset);
+    expect(handImage).not.toBeInTheDocument();
   });
 });
