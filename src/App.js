@@ -16,17 +16,29 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">Lets play rock, paper and scissors</header>
-      <SelectOpponent selectOpponent={selectOpponent} />
-      <PlayerHand player={"Player1"} selectHand={selectHand} />
-      <HandImage selectedHand={selectedHand} fill={"lightgreen"} />
-      <p data-testid="selected-hand">{selectedHand}</p>
-      {selectedOpponent === "Computer" ? (
-        <ComputerOpponent selectedHand={selectedHand} />
-      ) : (
-        <HumanOpponent playerOneHand={selectedHand} />
-      )}
+    <div className="App container-fluid h-100 ">
+      <div className="row h-100 justify-content-center align-items-center">
+        <div className="container">
+          <header className="App-header ">
+            <h1>Lets play rock, paper and scissors</h1>
+          </header>
+          <SelectOpponent selectOpponent={selectOpponent} />
+          <div className="row" style={{ alignItems: "flex-end" }}>
+            <div className="col-6">
+              <PlayerHand player={"Player1"} selectHand={selectHand} />
+              <HandImage selectedHand={selectedHand} fill={"lightgreen"} />
+              <p data-testid="selected-hand">{selectedHand}</p>
+            </div>
+            <div className="col-6">
+              {selectedOpponent === "Computer" ? (
+                <ComputerOpponent selectedHand={selectedHand} />
+              ) : (
+                <HumanOpponent playerOneHand={selectedHand} />
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

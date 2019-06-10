@@ -11,26 +11,31 @@ function PlayerHand(props) {
   };
 
   return (
-    <div data-testid="player-hand" className="player-hand">
+    <div data-testid="player-hand" className="player-hand ">
       <form onSubmit={handleSubmit}>
-        <fieldset>
-          <legend>{`Choose your hand: ${props.player}`}</legend>
+        <fieldset className="form-group">
+          <legend className="col-form-label">
+            <h4>{`Choose your hand: ${props.player}`}</h4>
+          </legend>
           {["Rock", "Paper", "Scissors"].map(r => (
-            <label key={r}>
-              {r}
-              <input
-                type="radio"
-                value={r}
-                checked={value === r}
-                onChange={handleChange}
-              />
-            </label>
+            <div className="form-check-inline" key={r}>
+              <label className="form-check-label">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  value={r}
+                  checked={value === r}
+                  onChange={handleChange}
+                />
+                {r}
+              </label>
+            </div>
           ))}
         </fieldset>
         <button
           data-testid="submit-hand"
           type="submit"
-          className="submit-button"
+          className="submit-button btn btn-primary"
         >
           Play hand!
         </button>
