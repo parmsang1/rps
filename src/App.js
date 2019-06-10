@@ -4,15 +4,25 @@ import SelectOpponent from "./components/SelectOpponent";
 import ComputerOpponent from "./components/ComputerOpponent";
 import HumanOpponent from "./components/HumanOpponent";
 import HandImage from "./components/HandImage";
+import GameEngine from "./components/GameEngine";
 import "./App.css";
 
 function App() {
   const [selectedHand, setValue] = useState("");
+  const [opponentHand, setOpponentHand] = useState("");
   const [selectedOpponent, setOpponent] = useState("Computer");
   const selectHand = hand => setValue(hand);
   const selectOpponent = opponent => {
     setValue("");
     setOpponent(opponent);
+  };
+  const updateOpponentHand = hand => {
+    setOpponentHand(hand);
+  };
+
+  const reset = () => {
+    setValue("");
+    setOpponentHand("");
   };
 
   return (
@@ -23,7 +33,7 @@ function App() {
             <h1>Lets play rock, paper and scissors</h1>
           </header>
           <SelectOpponent selectOpponent={selectOpponent} />
-          <div className="row" style={{ alignItems: "flex-start" }}>
+          <div className="row">
             <div className="col-6">
               <PlayerHand player={"Player1"} selectHand={selectHand} />
               <HandImage selectedHand={selectedHand} fill={"lightgreen"} />
@@ -31,14 +41,26 @@ function App() {
                 <p data-testid="selected-hand">{`Player1 picks ${selectedHand}`}</p>
               )}
             </div>
-            <div className="col-6">
-              {selectedOpponent === "Computer" ? (
-                <ComputerOpponent selectedHand={selectedHand} />
-              ) : (
-                <HumanOpponent playerOneHand={selectedHand} />
-              )}
-            </div>
+            {selectedOpponent === "Computer" ? (
+              <ComputerOpponent
+                selectedHand={selectedHand}
+                updateOpponentHand={updateOpponentHand}
+              />
+            ) : (
+              <HumanOpponent
+                playerOneHand={selectedHand}
+                updateOpponentHand={updateOpponentHand}
+              />
+            )}
           </div>
+          <GameEngine playerHand={selectedHand} opponentHand={opponentHand} />
+          <button
+            className="btn btn-secondary"
+            onClick={reset}
+            style={{ marginTop: "15px" }}
+          >
+            Reset game
+          </button>
         </div>
       </div>
     </div>

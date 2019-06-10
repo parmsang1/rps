@@ -27,9 +27,9 @@ describe("App", () => {
     expect(getAllByText("rock.svg")[0]).toBeInTheDocument();
   });
   it("can reset the game", () => {
-    const { getByTestId, getAllByText } = render(<App />);
+    const { getByTestId, getAllByText, getByText } = render(<App />);
     const submit = getByTestId("submit-hand");
-    const reset = getByTestId("submit-opponent");
+    const reset = getByText("Reset game");
     fireEvent.click(submit);
     const handImage = getAllByText("rock.svg");
     expect(handImage[0]).toBeInTheDocument();
@@ -45,12 +45,10 @@ describe("App", () => {
     expect(getByText("Player1 Wins")).toBeInTheDocument();
   });
   it("can play against another human", () => {
-    const { getByTestId, getByText, getByLabelText, debug } = render(<App />);
-    const submitOpponent = getByTestId("submit-opponent");
+    const { getByTestId, getByText, getByLabelText } = render(<App />);
     const submit = getByTestId("submit-hand");
 
     fireEvent.click(getByLabelText("Human"));
-    fireEvent.click(submitOpponent);
     fireEvent.click(submit);
     expect(getByText("Choose your hand: Player2")).toBeInTheDocument();
     fireEvent.click(submit);

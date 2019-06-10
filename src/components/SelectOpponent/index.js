@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 
 function SelectOpponent(props) {
   const [value, setValue] = useState("Computer");
-  const handleChange = event => setValue(event.target.value);
+  const handleChange = event => {
+    setValue(event.target.value);
+    props.selectOpponent(event.target.value);
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -32,13 +35,13 @@ function SelectOpponent(props) {
             </div>
           ))}
         </fieldset>
-        <button
+        {/* <button
           data-testid="submit-opponent"
           type="submit"
           className="submit-button btn btn-primary"
         >
           Select Opponent / Reset Hand
-        </button>
+        </button> */}
       </form>
     </div>
   );

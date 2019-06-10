@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function GameEngine(props) {
+  if (!props.playerHand) return null;
+
   const checkWinningHand = (playerHand, opponentHand) => {
     if (playerHand === opponentHand) return "Draw!";
     if (playerHand === "Rock" && opponentHand === "Scissors")

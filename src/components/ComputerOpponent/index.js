@@ -1,20 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import HandImage from "../HandImage";
-import GameEngine from "../GameEngine";
 
 function ComputerOpponent(props) {
   if (!props.selectedHand) return null;
 
   const hands = ["Rock", "Paper", "Scissors"];
   const computerHand = hands[Math.floor(Math.random() * hands.length)];
+  props.updateOpponentHand(computerHand);
 
   return (
-    <>
-      <HandImage selectedHand={props.selectedHand} fill={"lightblue"} />
+    <div className="col-6" style={{ alignSelf: "flex-end" }}>
+      <HandImage selectedHand={computerHand} fill={"lightblue"} />
       <p>{`Computer picks ${computerHand}`}</p>
-      <GameEngine playerHand={props.selectedHand} opponentHand={computerHand} />
-    </>
+    </div>
   );
 }
 
