@@ -2,6 +2,7 @@ import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import App from "../App";
 import PlayerHand from "../components/PlayerHand";
+import GameEngine from "../components/GameEngine";
 
 afterEach(cleanup);
 
@@ -37,5 +38,17 @@ describe("App", () => {
     expect(handImage).toBeInTheDocument();
     fireEvent.click(reset);
     expect(handImage).not.toBeInTheDocument();
+  });
+
+  it("can play against a computer", () => {
+    const { getByTestId, getByText } = render(<App />);
+    jest.doMock("../components/GameEngine", () => {
+      return () => <h2>Player1 Wins</h2>;
+    });
+    const submit = getByTestId("submit-hand");
+    const selectedHand = getByTestId("selected-hand");
+    fireEvent.click(submit);
+    expect(selectedHand).toHaveTextContent("Rock");
+    expect(getByText("Player1 Wins")).toBeInTheDocument();
   });
 });
