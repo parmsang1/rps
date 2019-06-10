@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="App container-fluid h-100 ">
       <div className="row h-100 justify-content-center align-items-center">
-        <div className="container" key={resetKey}>
+        <div className="container">
           <header className="App-header ">
             <h1>Lets play rock, paper and scissors</h1>
           </header>
@@ -44,7 +44,7 @@ function App() {
           {selectedOpponent === "Human" && !opponentHand
             ? lookAwayMessage
             : null}
-          <div className="row">
+          <div className="row" key={resetKey}>
             <div
               className="col-6"
               style={{

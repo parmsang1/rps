@@ -3,11 +3,17 @@ import PropTypes from "prop-types";
 
 function PlayerHand(props) {
   const [value, setValue] = useState("Rock");
-  const handleChange = event => setValue(event.target.value);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = event => {
+    setValue(event.target.value);
+    setSubmitted(false);
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
     props.selectHand(value);
+    setSubmitted(true);
   };
 
   return (
@@ -36,6 +42,7 @@ function PlayerHand(props) {
           data-testid="submit-hand"
           type="submit"
           className="submit-button btn btn-primary"
+          disabled={submitted}
         >
           Play hand!
         </button>
