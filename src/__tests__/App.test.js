@@ -2,9 +2,13 @@ import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import App from "../App";
 import PlayerHand from "../components/PlayerHand";
-import GameEngine from "../components/GameEngine";
+//import GameEngine from "../components/GameEngine";
 
 afterEach(cleanup);
+
+jest.mock("../components/GameEngine", () => {
+  return () => <h2>Player1 Wins</h2>;
+});
 
 describe("App", () => {
   it("renders message introducing game", () => {
@@ -42,9 +46,6 @@ describe("App", () => {
 
   it("can play against a computer", () => {
     const { getByTestId, getByText } = render(<App />);
-    jest.doMock("../components/GameEngine", () => {
-      return () => <h2>Player1 Wins</h2>;
-    });
     const submit = getByTestId("submit-hand");
     const selectedHand = getByTestId("selected-hand");
     fireEvent.click(submit);
