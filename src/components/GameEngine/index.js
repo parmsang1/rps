@@ -24,6 +24,9 @@ function GameEngine(props) {
   return <h2>{checkWinningHand(props.playerHand, props.opponentHand)}</h2>;
 }
 
-GameEngine.propTypes = {};
+GameEngine.propTypes = {
+  playerHand: PropTypes.string,
+  opponentHand: PropTypes.string
+};
 
 export default GameEngine;

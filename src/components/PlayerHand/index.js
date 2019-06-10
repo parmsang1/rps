@@ -44,6 +44,9 @@ function PlayerHand(props) {
   );
 }
 
-PlayerHand.propTypes = {};
+PlayerHand.propTypes = {
+  selectHand: PropTypes.func,
+  player: PropTypes.string
+};
 
 export default PlayerHand;

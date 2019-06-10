@@ -11,6 +11,8 @@ function HandImage(props) {
   if (props.selectedHand === "Scissors") return <Scissors fill={props.fill} />;
 }
 
-HandImage.propTypes = {};
+HandImage.propTypes = {
+  selectedHand: PropTypes.string
+};
 
 export default HandImage;

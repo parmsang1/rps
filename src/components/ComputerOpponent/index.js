@@ -17,6 +17,9 @@ function ComputerOpponent(props) {
   );
 }
 
-ComputerOpponent.propTypes = {};
+ComputerOpponent.propTypes = {
+  selectedHand: PropTypes.string,
+  updateOpponentHand: PropTypes.func
+};
 
 export default ComputerOpponent;

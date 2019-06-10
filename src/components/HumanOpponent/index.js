@@ -28,6 +28,10 @@ function HumanOpponent(props) {
   );
 }
 
-HumanOpponent.propTypes = {};
+HumanOpponent.propTypes = {
+  selectHand: PropTypes.string,
+  playerOneHand: PropTypes.string,
+  updateOpponentHand: PropTypes.func
+};
 
 export default HumanOpponent;

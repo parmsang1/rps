@@ -35,18 +35,13 @@ function SelectOpponent(props) {
             </div>
           ))}
         </fieldset>
-        {/* <button
-          data-testid="submit-opponent"
-          type="submit"
-          className="submit-button btn btn-primary"
-        >
-          Select Opponent / Reset Hand
-        </button> */}
       </form>
     </div>
   );
 }
 
-SelectOpponent.propTypes = {};
+SelectOpponent.propTypes = {
+  selectOpponent: PropTypes.func
+};
 
 export default SelectOpponent;
