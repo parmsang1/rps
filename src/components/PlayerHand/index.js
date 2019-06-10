@@ -14,7 +14,7 @@ function PlayerHand(props) {
     <div data-testid="player-hand" className="player-hand">
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <legend>Choose your hand</legend>
+          <legend>{`Choose your hand: ${props.player}`}</legend>
           {["Rock", "Paper", "Scissors"].map(r => (
             <label key={r}>
               {r}
