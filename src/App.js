@@ -23,11 +23,13 @@ function App() {
             <h1>Lets play rock, paper and scissors</h1>
           </header>
           <SelectOpponent selectOpponent={selectOpponent} />
-          <div className="row" style={{ alignItems: "flex-end" }}>
+          <div className="row" style={{ alignItems: "flex-start" }}>
             <div className="col-6">
               <PlayerHand player={"Player1"} selectHand={selectHand} />
               <HandImage selectedHand={selectedHand} fill={"lightgreen"} />
-              <p data-testid="selected-hand">{selectedHand}</p>
+              {selectedHand && (
+                <p data-testid="selected-hand">{`Player1 picks ${selectedHand}`}</p>
+              )}
             </div>
             <div className="col-6">
               {selectedOpponent === "Computer" ? (

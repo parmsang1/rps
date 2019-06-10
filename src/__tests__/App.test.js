@@ -21,8 +21,8 @@ describe("App", () => {
   it("should display selected hand when submitting player hand", () => {
     const { getByTestId, getAllByText } = render(<App />);
     const submit = getByTestId("submit-hand");
-    const selectedHand = getByTestId("selected-hand");
     fireEvent.click(submit);
+    const selectedHand = getByTestId("selected-hand");
     expect(selectedHand).toHaveTextContent("Rock");
     expect(getAllByText("rock.svg")[0]).toBeInTheDocument();
   });
@@ -39,8 +39,8 @@ describe("App", () => {
   it("can play against a computer", () => {
     const { getByTestId, getByText } = render(<App />);
     const submit = getByTestId("submit-hand");
-    const selectedHand = getByTestId("selected-hand");
     fireEvent.click(submit);
+    const selectedHand = getByTestId("selected-hand");
     expect(selectedHand).toHaveTextContent("Rock");
     expect(getByText("Player1 Wins")).toBeInTheDocument();
   });

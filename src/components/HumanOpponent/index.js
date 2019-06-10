@@ -16,6 +16,9 @@ function HumanOpponent(props) {
     <div data-testid="human-hand" className="human-hand">
       <PlayerHand player={"Player2"} selectHand={selectHand} />
       <HandImage selectedHand={selectedHand} fill={"lightblue"} />
+      {selectedHand && (
+        <p data-testid="selected-hand">{`Player2 picks ${selectedHand}`}</p>
+      )}
       <GameEngine
         playerHand={props.playerOneHand}
         opponentHand={selectedHand}

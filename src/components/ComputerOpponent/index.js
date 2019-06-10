@@ -12,6 +12,7 @@ function ComputerOpponent(props) {
   return (
     <>
       <HandImage selectedHand={props.selectedHand} fill={"lightblue"} />
+      <p>{`Computer picks ${computerHand}`}</p>
       <GameEngine playerHand={props.selectedHand} opponentHand={computerHand} />
     </>
   );
