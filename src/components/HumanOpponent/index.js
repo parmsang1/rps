@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import PlayerHand from "../PlayerHand";
 import HandImage from "../HandImage";
-import GameEngine from "../GameEngine";
 
 function HumanOpponent(props) {
   const [selectedHand, setValue] = useState("");

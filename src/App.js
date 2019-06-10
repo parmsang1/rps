@@ -11,6 +11,7 @@ function App() {
   const [selectedHand, setValue] = useState("");
   const [opponentHand, setOpponentHand] = useState("");
   const [selectedOpponent, setOpponent] = useState("Computer");
+  const [resetKey, setResetKey] = useState(1);
   const selectHand = hand => setValue(hand);
   const selectOpponent = opponent => {
     setValue("");
@@ -23,18 +24,33 @@ function App() {
   const reset = () => {
     setValue("");
     setOpponentHand("");
+    setResetKey(resetKey + 1);
   };
+
+  const lookAwayMessage = selectedHand ? (
+    <p>Player 1 look away from screen!</p>
+  ) : (
+    <p>Player 2 look away from screen!</p>
+  );
 
   return (
     <div className="App container-fluid h-100 ">
       <div className="row h-100 justify-content-center align-items-center">
-        <div className="container">
+        <div className="container" key={resetKey}>
           <header className="App-header ">
             <h1>Lets play rock, paper and scissors</h1>
           </header>
           <SelectOpponent selectOpponent={selectOpponent} />
+          {selectedOpponent === "Human" && !opponentHand
+            ? lookAwayMessage
+            : null}
           <div className="row">
-            <div className="col-6">
+            <div
+              className="col-6"
+              style={{
+                visibility: selectedHand && !opponentHand ? "hidden" : "visible"
+              }}
+            >
               <PlayerHand player={"Player1"} selectHand={selectHand} />
               <HandImage selectedHand={selectedHand} fill={"lightgreen"} />
               {selectedHand && (
